@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Storage\StoragePath;
+
 session_name('yii_cloud_installer');
 session_set_cookie_params([
     'httponly' => true,
@@ -16,6 +18,7 @@ header('X-Frame-Options: DENY');
 header('Referrer-Policy: no-referrer');
 
 $root = dirname(__DIR__, 2);
+require_once $root . '/src/Storage/StoragePath.php';
 $runtime = $root . '/runtime';
 $configFile = $runtime . '/installation.php';
 $publicRoot = realpath(dirname(__DIR__)) ?: dirname(__DIR__);
@@ -81,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$installed) {
     if (preg_match('/\A[A-Za-z0-9_.@-]{1,128}\z/', $form['username']) !== 1) {
         $errors[] = '请填写有效的数据库用户名。';
     }
-    if ($form['storage'] === '' || $form['storage'][0] !== DIRECTORY_SEPARATOR) {
+    if (!StoragePath::isAbsolute($form['storage'])) {
         $errors[] = '文件存储目录必须填写绝对路径。';
     }
     if (!in_array($action, ['test', 'install'], true)) {
@@ -133,8 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$installed) {
                 if (
                     $resolvedStoragePath === ''
                     || $resolvedStoragePath === DIRECTORY_SEPARATOR
-                    || $resolvedStoragePath === $publicRoot
-                    || str_starts_with($resolvedStoragePath . DIRECTORY_SEPARATOR, rtrim($publicRoot, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR)
+                    || StoragePath::isWithin($resolvedStoragePath, $publicRoot)
                 ) {
                     throw new RuntimeException('文件存储目录不能位于网站 public 目录中。');
                 }

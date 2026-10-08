@@ -1,6 +1,6 @@
 # Homey (Yii Cloud)
 
-Current release: **0.1.0** (`v0.1.0`).
+Current release: **0.1.1** (`v0.1.1`).
 
 Yii Cloud is a self-hosted file cloud built with Yii3, MySQL, and a responsive
 Vue 3 progressive web app. It supports user accounts, private file storage,
@@ -84,7 +84,8 @@ Prepare the upload as a complete application package:
    private storage files.
 
 Visit `https://your-domain.example/install/`, enter the MySQL connection
-details and an absolute storage path outside `public/`, and select **Test
+details and an absolute storage path outside `public/` (for example,
+`/srv/homey/storage` on Linux or `D:\homey\storage` on Windows), and select **Test
 database connection** before **Start installation**. The PHP runtime must have
 PDO MySQL enabled, and the Apache/PHP user needs read access to the application
 and write access to `runtime/` and the storage directory. The installer creates
