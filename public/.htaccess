@@ -1,0 +1,24 @@
+Options -Indexes
+DirectoryIndex index.html index.php
+LimitRequestBody 115343360
+RewriteEngine On
+
+RewriteRule ^dav/?(.*)$ dav.php [QSA,L]
+
+RewriteRule ^api(?:/|$) index.php [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^ index.html [QSA,L]
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_php.c>
+    php_value upload_max_filesize 100M
+    php_value post_max_size 110M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>

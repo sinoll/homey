@@ -1,0 +1,18 @@
+{
+  "name": "云盒 · 私人文件云",
+  "short_name": "云盒",
+  "description": "私有、安全、随时可用的个人文件云",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#f5f7fb",
+  "icons": [
+    {
+      "src": "/cloud-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
