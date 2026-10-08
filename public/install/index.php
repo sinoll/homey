@@ -28,7 +28,7 @@ $installed = is_file($configFile);
 $csrfToken = $_SESSION['csrf_token'] ??= bin2hex(random_bytes(32));
 
 $escape = static fn(string $value): string => htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$defaultStoragePath = $root . '/data/storage';
+$defaultStoragePath = $root . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'storage';
 $form = [
     'host' => '127.0.0.1',
     'port' => '3306',
@@ -66,6 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$installed) {
     foreach (['host', 'port', 'database', 'username', 'storage'] as $field) {
         $value = $_POST[$field] ?? '';
         $form[$field] = is_string($value) ? trim($value) : '';
+    }
+    if ($form['storage'] === '') {
+        $form['storage'] = $defaultStoragePath;
     }
     $password = $_POST['password'] ?? '';
     $password = is_string($password) ? $password : '';
@@ -288,7 +291,7 @@ if ($homeUrl === '//') {
                 <div class="field"><label for="database">数据库名</label><input id="database" name="database" value="<?= $escape($form['database']) ?>" required maxlength="64" pattern="[A-Za-z0-9_]+" autocomplete="off"></div>
                 <div class="field"><label for="username">数据库用户名</label><input id="username" name="username" value="<?= $escape($form['username']) ?>" required maxlength="128" autocomplete="username"></div>
                 <div class="field full"><label for="password">数据库密码</label><input id="password" name="password" type="password" required autocomplete="new-password"></div>
-                <div class="field full"><label for="storage">文件存储绝对路径</label><input id="storage" name="storage" value="<?= $escape($form['storage']) ?>" required maxlength="1024" autocomplete="off"><p class="help">默认 <?= $escape($defaultStoragePath) ?>。目录必须位于 public 网站目录之外，并且 PHP/Apache 运行用户有写权限。</p></div>
+                <div class="field full"><label for="storage">文件存储绝对路径</label><input id="storage" name="storage" value="<?= $escape($form['storage']) ?>" maxlength="1024" autocomplete="off" placeholder="<?= $escape($defaultStoragePath) ?>"><p class="help">留空时使用默认目录 <?= $escape($defaultStoragePath) ?>。目录必须位于 public 网站目录之外，并且 PHP/Apache 运行用户有写权限。</p></div>
             </div>
             <p class="warning">请在 HTTPS 下运行此向导，不要把数据库密码通过未加密的 HTTP 网络提交。安装成功后务必删除 public/install/ 目录。</p>
             <div class="buttons">
