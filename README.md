@@ -1,6 +1,6 @@
 # Homey (Yii Cloud)
 
-Current release: **0.1.4** (`v0.1.4`).
+Current release: **0.1.5** (`v0.1.5`).
 
 Yii Cloud is a self-hosted file cloud built with Yii3, MySQL, and a responsive
 Vue 3 progressive web app. It supports user accounts, private file storage,
@@ -73,10 +73,11 @@ user with permission to create and alter tables and indexes.
 
 Prepare the upload as a complete application package:
 
-1. Include the PHP dependency directory `vendor/`, the `database/migrations/`
-   files, and the prebuilt web app in `public/` (`index.html`, `assets/`,
-   `sw.js`, and the manifest). The browser installer does not run Composer or
-   build the frontend on the server. If you change frontend source code, rebuild
+1. Include the PHP dependency directory `vendor/`, the generated Yii config
+   merge plan `config/.merge-plan.php`, the `database/migrations/` files, and
+   the prebuilt web app in `public/` (`index.html`, `assets/`, `sw.js`, and the
+   manifest). The browser installer does not run Composer or build the frontend
+   on the server. If you change frontend source code, rebuild
    locally with `cd frontend && npm ci && npm run build` and copy `frontend/dist/`
    into `public/` before uploading.
 2. Upload the project so the Apache document root points to its `public/`

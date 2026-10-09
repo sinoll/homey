@@ -1,2 +1,3 @@
 *-local.php
 .merge-plan.php
+!.merge-plan.php
