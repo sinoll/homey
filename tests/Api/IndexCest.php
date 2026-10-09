@@ -19,7 +19,7 @@ final readonly class IndexCest
                 'status' => 'success',
                 'data' => [
                     'name' => 'Yii Cloud',
-                    'version' => '0.1.0',
+                    'version' => '0.1.3',
                 ],
             ],
         );

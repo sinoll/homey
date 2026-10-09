@@ -1,4 +1,4 @@
-const CACHE_NAME = 'yii-cloud-shell-v1'
+const CACHE_NAME = 'yii-cloud-shell-v3'
 const SHELL_FILES = ['/', '/manifest.webmanifest', '/cloud-icon.svg']
 const isShellResource = (pathname) =>
   SHELL_FILES.includes(pathname) || pathname.startsWith('/assets/')

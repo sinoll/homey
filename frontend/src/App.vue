@@ -773,14 +773,14 @@ onUnmounted(() => {
     <section class="auth-card share-card">
       <div class="brand-lockup">
         <div class="brand-icon"><span class="cloud-shape">☁</span><span class="brand-arrow">↓</span></div>
-        <div><div class="brand-name">云盒</div><div class="brand-tagline">安全文件分享</div></div>
+        <div><div class="brand-name">温馨云-homey</div><div class="brand-tagline">安全文件分享</div></div>
       </div>
       <div v-if="!publicDetails && !errorMessage" class="loading-state share-loading"><span class="spinner"></span><span>正在读取分享内容…</span></div>
       <template v-else-if="publicDetails">
         <div class="auth-heading share-heading">
           <p class="eyebrow">READ-ONLY SHARED {{ publicDetails.type.toUpperCase() }}</p>
           <h1>{{ publicDetails.name }}</h1>
-          <p>{{ publicDetails.type === 'file' ? '此文件由云盒用户分享给你。' : `此文件夹包含 ${publicDetails.files.length} 个文件。` }}</p>
+          <p>{{ publicDetails.type === 'file' ? '此文件由温馨云-homey 用户分享给你。' : `此文件夹包含 ${publicDetails.files.length} 个文件。` }}</p>
         </div>
         <div class="shared-file-list">
           <div v-for="file in publicDetails.files" :key="file.id" class="shared-file-row">
@@ -794,7 +794,7 @@ onUnmounted(() => {
         </div>
       </template>
       <p v-if="errorMessage" class="notice error-notice share-error" role="alert">{{ errorMessage }}</p>
-      <a class="share-home-link" href="/">由云盒私有文件云提供</a>
+      <a class="share-home-link" href="/">由温馨云-homey 私有文件云提供</a>
     </section>
   </main>
 
@@ -803,7 +803,7 @@ onUnmounted(() => {
       <div class="brand-lockup">
         <div class="brand-icon"><span class="cloud-shape">☁</span><span class="brand-arrow">↓</span></div>
         <div>
-          <div class="brand-name">云盒</div>
+          <div class="brand-name">温馨云-homey</div>
           <div class="brand-tagline">文件，随身而在</div>
         </div>
       </div>
@@ -821,7 +821,7 @@ onUnmounted(() => {
         <input id="auth-password" v-model="password" type="password" :autocomplete="authMode === 'login' ? 'current-password' : 'new-password'" placeholder="至少 8 位" required minlength="8" maxlength="72" />
         <p v-if="errorMessage" class="notice error-notice" role="alert">{{ errorMessage }}</p>
         <button class="primary-button auth-submit" type="submit" :disabled="busy">
-          {{ busy ? '请稍候…' : authMode === 'login' ? '登录云盒' : '创建账号' }}
+          {{ busy ? '请稍候…' : authMode === 'login' ? '登录温馨云-homey' : '创建账号' }}
         </button>
       </form>
       <p class="auth-switch">
@@ -836,9 +836,9 @@ onUnmounted(() => {
 
   <div v-else class="app-shell">
     <aside class="sidebar">
-      <a class="brand-lockup sidebar-brand" href="/" aria-label="云盒首页">
+      <a class="brand-lockup sidebar-brand" href="/" aria-label="温馨云-homey 首页">
         <div class="brand-icon small-brand-icon"><span class="cloud-shape">☁</span><span class="brand-arrow">↓</span></div>
-        <div><div class="brand-name">云盒</div><div class="brand-tagline">私人文件云</div></div>
+        <div><div class="brand-name">温馨云-homey</div><div class="brand-tagline">私人文件云</div></div>
       </a>
 
       <div class="nav-caption">工作空间</div>
@@ -1067,7 +1067,7 @@ onUnmounted(() => {
           </template>
         </section>
 
-        <footer class="page-footer"><span><span class="secure-dot"></span> 安全连接 · WebDAV 地址 {{ webdavUrl }}</span><span>云盒 0.1</span></footer>
+        <footer class="page-footer"><span><span class="secure-dot"></span> 安全连接 · WebDAV 地址 {{ webdavUrl }}</span><span>温馨云-homey 0.1</span></footer>
       </section>
     </main>
   </div>

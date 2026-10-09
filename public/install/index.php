@@ -225,7 +225,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$installed) {
                 }
 
                 $installed = true;
-                $notice = '安装完成。现在可以打开云盒首页并注册第一个账户。请立即删除 public/install/ 安装目录。';
+                $notice = '安装完成。现在可以打开温馨云-homey 首页并注册第一个账户。请立即删除 public/install/ 安装目录。';
             } catch (Throwable $exception) {
                 $errors[] = $exception instanceof PDOException
                     ? '执行数据库迁移失败。请检查数据库账号是否有建表和修改表权限，并查看服务器 PHP 错误日志。'
@@ -253,7 +253,7 @@ if ($homeUrl === '//') {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
-    <title>云盒安装向导</title>
+    <title>温馨云-homey 安装向导</title>
     <style>
         :root{font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;color:#20263a;background:#f4f6fb;font-synthesis:none;text-rendering:optimizeLegibility}
         *{box-sizing:border-box}body{margin:0;min-height:100vh;padding:32px 16px}.card{width:min(100%,680px);margin:0 auto;padding:32px;border:1px solid #e5e9f2;border-radius:18px;background:#fff;box-shadow:0 18px 60px #28325a12}
@@ -265,13 +265,13 @@ if ($homeUrl === '//') {
 </head>
 <body>
 <main class="card">
-    <h1>云盒安装向导</h1>
+    <h1>温馨云-homey 安装向导</h1>
     <p class="intro">连接已有的 MySQL 数据库，创建数据表并配置安全的文件存储位置。此向导不安装或修改服务器软件。</p>
 
     <?php if ($installed): ?>
         <div class="locked">
             <p class="notice"><?= $escape($notice) ?></p>
-            <p><a class="link" href="<?= $escape($homeUrl) ?>">打开云盒首页</a></p>
+            <p><a class="link" href="<?= $escape($homeUrl) ?>">打开温馨云-homey 首页</a></p>
         </div>
     <?php else: ?>
         <div class="step"><b>1</b><div><strong>准备数据库</strong><br>请先在主机面板创建一个空的 MySQL 数据库和专用用户，并授予该用户创建、修改表和索引的权限。</div></div>
@@ -300,7 +300,7 @@ if ($homeUrl === '//') {
             </div>
         </form>
     <?php endif; ?>
-    <p class="footer">云盒 · 私人文件云</p>
+    <p class="footer">温馨云-homey · 私人文件云</p>
 </main>
 </body>
 </html>
