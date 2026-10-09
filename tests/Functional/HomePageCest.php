@@ -24,7 +24,7 @@ final readonly class HomePageCest
         assertSame(
             [
                 'status' => 'success',
-                'data' => ['name' => 'Yii Cloud', 'version' => '0.1.3'],
+                'data' => ['name' => 'Yii Cloud', 'version' => '0.1.4'],
             ],
             json_decode($output, true),
         );

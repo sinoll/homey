@@ -1,6 +1,6 @@
 # Homey (Yii Cloud)
 
-Current release: **0.1.3** (`v0.1.3`).
+Current release: **0.1.4** (`v0.1.4`).
 
 Yii Cloud is a self-hosted file cloud built with Yii3, MySQL, and a responsive
 Vue 3 progressive web app. It supports user accounts, private file storage,
